@@ -16,7 +16,7 @@ if not SECRET_KEY:
     else:
         raise ValueError("SECRET_KEY must be configured in production.")
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+
 
 
 INSTALLED_APPS = [
