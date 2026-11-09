@@ -1,0 +1,168 @@
+
+{% extends "base.html" %}
+
+{% block title %}My Properties | PropCare{% endblock %}
+
+{% block content %}
+
+<section class="property-page">
+
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="property-page-heading">
+
+            <div>
+                <span class="section-tag">PROPERTY PORTFOLIO</span>
+
+                <h1>My Properties</h1>
+
+                <p>
+                    Manage your registered properties in one place.
+                </p>
+            </div>
+
+            <a href="{% url 'properties:add' %}"
+               class="btn btn-primary">
+                + Add Property
+            </a>
+
+        </div>
+
+        <!-- Property Count -->
+        <div class="property-summary">
+            <div>
+                <span>MY PROPERTY PORTFOLIO</span>
+                <h3>{{ properties|length }} Properties</h3>
+            </div>
+
+            <div class="summary-icon">🏠</div>
+        </div>
+
+        <!-- Search -->
+        <div class="property-search">
+            <input type="text"
+                   id="propertySearch"
+                   placeholder="Search properties by title or city..."
+                   onkeyup="filterProperties()">
+        </div>
+
+        <!-- Property Cards -->
+        <div class="row g-4" id="propertyContainer">
+
+            {% for property in properties %}
+
+            <div class="col-md-6 col-lg-4 property-item">
+
+                <div class="property-card">
+
+                    {% if property.image %}
+
+                        <img src="{{ property.image.url }}"
+                             alt="{{ property.title }}">
+
+                    {% else %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700"
+                            alt="Property image">
+
+                    {% endif %}
+
+                    <div class="property-content">
+
+                        <span class="property-badge">
+                            {{ property.property_type|default:"Property" }}
+                        </span>
+
+                        <h4>{{ property.title }}</h4>
+
+                        <p>
+                            📍 {{ property.city }}, {{ property.state }}
+                        </p>
+
+                        <p class="property-description">
+                            {{ property.description|truncatewords:15 }}
+                        </p>
+
+                        <div class="property-actions">
+
+                            <a href="{% url 'properties:edit' property.pk %}"
+                               class="btn btn-primary">
+                                Edit
+                            </a>
+
+                            <a href="{% url 'properties:delete' property.pk %}"
+                               class="btn btn-outline-danger">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">🏡</div>
+
+                    <h3>No Properties Found</h3>
+
+                    <p>
+                        You haven't added any properties yet.
+                        Add your first property to start managing
+                        it with PropCare.
+                    </p>
+
+                    <a href="{% url 'properties:add' %}"
+                       class="btn btn-primary btn-lg">
+                        + Add Your First Property
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'dashboard:home' %}"
+               class="back-link">
+                ← Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+function filterProperties() {
+
+    let input = document.getElementById("propertySearch");
+    let filter = input.value.toLowerCase();
+
+    let cards = document.querySelectorAll(".property-item");
+
+    cards.forEach(function(card) {
+
+        let content = card.innerText.toLowerCase();
+
+        card.style.display =
+            content.includes(filter) ? "" : "none";
+
+    });
+
+}
+</script>
+
+{% endblock %}

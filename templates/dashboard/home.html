@@ -1,0 +1,231 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | PropCare{% endblock %}
+
+{% block content %}
+
+<!-- Welcome Banner -->
+<section class="dashboard-hero">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-8">
+                <p class="hero-label">YOUR PROPERTY OVERVIEW</p>
+
+                <h1>
+                    Welcome back, {{ user.first_name|default:user.username }}!
+                </h1>
+
+                <p>
+                    Manage your properties and stay connected,
+                    wherever you are.
+                </p>
+
+                <a href="{% url 'properties:add' %}"
+                   class="btn btn-warning btn-lg mt-3">
+                    + Add Property
+                </a>
+            </div>
+
+            <div class="col-lg-4 text-center">
+                <img
+                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700"
+                    class="hero-image"
+                    alt="Modern residential property">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Statistics -->
+<section class="container dashboard-section">
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-icon">🏠</div>
+                <p>Total Properties</p>
+                <h2>{{ property_count }}</h2>
+                <a href="{% url 'properties:list' %}">
+                    View Properties →
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-icon">👤</div>
+                <p>Account</p>
+                <h4>{{ user.username }}</h4>
+                <span>Registered User</span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-icon">🔔</div>
+                <p>Property Management</p>
+                <h4>PropCare</h4>
+                <span>Your remote property assistant</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Property Management Features -->
+<section class="container dashboard-section">
+
+    <div class="section-heading">
+        <div>
+            <h2>Manage Your Property</h2>
+            <p>Everything your property needs in one place.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <img
+                    src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700"
+                    alt="Modern house exterior">
+
+                <div class="feature-content">
+                    <h4>Property Management</h4>
+                    <p>
+                        Keep property information, photos
+                        and updates in one secure place.
+                    </p>
+
+                    <a href="{% url 'properties:list' %}">
+                        Manage Properties →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <img
+                    src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=700"
+                    alt="Beautiful home interior">
+
+                <div class="feature-content">
+                    <h4>Inspection & Maintenance</h4>
+                    <p>
+                        Request inspections, review reports
+                        and manage repair work remotely.
+                    </p>
+
+                    <a href="/inspections/">
+                        Explore Services →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <img
+                    src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700"
+                    alt="Luxury residential interior">
+
+                <div class="feature-content">
+                    <h4>Rent & Sell</h4>
+                    <p>
+                        Prepare property listings and
+                        coordinate rental or sale activities.
+                    </p>
+
+                    <a href="/rentals/">
+                        Explore Listings →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- My Properties -->
+<section class="container dashboard-section">
+
+    <div class="section-heading">
+        <div>
+            <h2>My Properties</h2>
+            <p>Recently added properties.</p>
+        </div>
+
+        <a href="{% url 'properties:list' %}"
+           class="btn btn-outline-primary">
+            View All
+        </a>
+    </div>
+
+    <div class="row g-4">
+
+        {% for property in properties %}
+
+        <div class="col-md-4">
+
+            <div class="property-card">
+
+                {% if property.image %}
+                    <img src="{{ property.image.url }}"
+                         alt="{{ property.title }}">
+                {% else %}
+                    <img
+                        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700"
+                        alt="Property">
+                {% endif %}
+
+                <div class="property-content">
+
+                    <h5>{{ property.title }}</h5>
+
+                    <p>
+                        {{ property.city }}, {{ property.state }}
+                    </p>
+
+                    <a href="{% url 'properties:edit' property.pk %}"
+                       class="btn btn-primary">
+                        Manage Property
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+            <div class="empty-state">
+                <h4>No properties added yet</h4>
+
+                <p>
+                    Start managing your property remotely
+                    by adding your first property.
+                </p>
+
+                <a href="{% url 'properties:add' %}"
+                   class="btn btn-primary">
+                    Add Your First Property
+                </a>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

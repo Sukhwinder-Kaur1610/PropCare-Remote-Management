@@ -1,0 +1,309 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+PropCare | Your Property. Our Local Presence.
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="home-hero">
+
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <span class="home-label">
+                    TRUSTED REMOTE PROPERTY MANAGEMENT
+                </span>
+
+                <h1>
+                    Your property.<br>
+                    <span>Always in your care.</span>
+                </h1>
+
+                <p class="home-description">
+                    Monitor, maintain and manage your property
+                    from anywhere in the world—with local support
+                    and complete visibility.
+                </p>
+
+                <div class="home-buttons">
+
+                    {% if user.is_authenticated %}
+
+                        <a href="{% url 'dashboard:home' %}"
+                           class="home-btn-primary">
+                            Go to Dashboard →
+                        </a>
+
+                    {% else %}
+
+                        <a href="{% url 'register' %}"
+                           class="home-btn-primary">
+                            Get Started →
+                        </a>
+
+                        <a href="{% url 'login' %}"
+                           class="home-btn-secondary">
+                            Owner Login
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="home-trust">
+                    <span>✓ Verified workflows</span>
+                    <span>✓ Photo reports</span>
+                    <span>✓ Local services</span>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="home-image-wrapper">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200"
+                        alt="Modern luxury residential property"
+                        class="home-main-image">
+
+                    <div class="image-caption">
+                        <span>🏡</span>
+                        <div>
+                            <strong>Your Property</strong>
+                            <small>Our Local Presence</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- FEATURES SECTION -->
+<section class="home-features">
+
+    <div class="container">
+
+        <div class="home-section-heading">
+
+            <span class="section-tag">HOW PROPCARE HELPS</span>
+
+            <h2>Everything your property needs</h2>
+
+            <p>
+                From inspections to maintenance and future
+                rental or sale assistance.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- FEATURE 1 -->
+            <div class="col-md-4">
+
+                <div class="home-feature-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800"
+                        alt="Modern house exterior">
+
+                    <div class="feature-details">
+
+                        <div class="feature-icon">🏠</div>
+
+                        <h4>Property Management</h4>
+
+                        <p>
+                            Keep your property information,
+                            photos and updates in one secure place.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 2 -->
+            <div class="col-md-4">
+
+                <div class="home-feature-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800"
+                        alt="Residential property interior">
+
+                    <div class="feature-details">
+
+                        <div class="feature-icon">🔧</div>
+
+                        <h4>Inspection & Maintenance</h4>
+
+                        <p>
+                            Request inspections, review reports
+                            and approve repair work remotely.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 3 -->
+            <div class="col-md-4">
+
+                <div class="home-feature-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800"
+                        alt="Beautiful modern home interior">
+
+                    <div class="feature-details">
+
+                        <div class="feature-icon">🔑</div>
+
+                        <h4>Rent & Sell Assistance</h4>
+
+                        <p>
+                            Prepare verified listings and coordinate
+                            local visits with confidence.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WHY CHOOSE PROPCARE -->
+<section class="home-about">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <img
+                    src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1000"
+                    alt="Beautiful residential property"
+                    class="about-image">
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <span class="section-tag">
+                    YOUR PROPERTY, OUR PRIORITY
+                </span>
+
+                <h2>
+                    Stay connected to your property.
+                </h2>
+
+                <p>
+                    Manage your property from another city,
+                    state or country. PropCare helps property
+                    owners stay informed and connected through
+                    organised property information and local support.
+                </p>
+
+                <ul class="about-list">
+
+                    <li>✓ Property information management</li>
+
+                    <li>✓ Inspection and maintenance coordination</li>
+
+                    <li>✓ Property photo and report updates</li>
+
+                    <li>✓ Rental and sale assistance</li>
+
+                </ul>
+
+                {% if user.is_authenticated %}
+
+                    <a href="{% url 'dashboard:home' %}"
+                       class="home-btn-primary">
+                        Visit Dashboard →
+                    </a>
+
+                {% else %}
+
+                    <a href="{% url 'register' %}"
+                       class="home-btn-primary">
+                        Join PropCare →
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CALL TO ACTION -->
+<section class="home-cta">
+
+    <div class="container text-center">
+
+        <h2>
+            Your property deserves attention,
+            even when you are away.
+        </h2>
+
+        <p>
+            Join PropCare and experience remote property
+            management made simple.
+        </p>
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'dashboard:home' %}"
+               class="cta-button">
+                Go to Dashboard →
+
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'register' %}"
+               class="cta-button">
+                Join PropCare →
+
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

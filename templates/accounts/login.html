@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block title %}Welcome back | PropCare{% endblock %}{% block content %}
+YOUR PROPERTY. OUR LOCAL PRESENCE.
+Peace of mind, wherever life takes you.
+One place to manage your property, inspections and local support.
+
+WELCOME TO PROPCARE
+Welcome back
+Sign in to your PropCare account.
+
+{% csrf_token %}{% if form.non_field_errors %}
+{{ form.non_field_errors }}
+{% endif %}{% for field in form %}
+{{ field.label }}{{ field }}{% if field.help_text %}
+{{ field.help_text }}
+{% endif %}{% for error in field.errors %}
+{{ error }}
+{% endfor %}
+{% endfor %}Sign In
+New to PropCare? Register
+
+{% endblock %}

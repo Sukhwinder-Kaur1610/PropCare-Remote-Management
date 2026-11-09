@@ -1,0 +1,84 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Add Property | PropCare{% endblock %}
+
+{% block content %}
+
+<section class="property-page">
+
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="property-page-heading">
+            <div>
+                <span class="section-tag">PROPERTY MANAGEMENT</span>
+                <h1>{{ heading|default:"Add New Property" }}</h1>
+                <p>Register and manage your property remotely from anywhere.</p>
+            </div>
+
+            <a href="{% url 'dashboard:home' %}"
+               class="back-link">
+                ← Back to Dashboard
+            </a>
+        </div>
+
+        <div class="property-form-card">
+
+            <div class="form-intro">
+                <div class="form-icon">🏡</div>
+                <div>
+                    <h3>Property Information</h3>
+                    <p>Enter the details of your property below.</p>
+                </div>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="form-error">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <div class="property-fields">
+                    {{ form.as_p }}
+                </div>
+
+                <div class="form-actions">
+
+                    <button type="submit" class="save-btn">
+                        Save Property
+                    </button>
+
+                    <a href="{% url 'properties:list' %}"
+                       class="cancel-btn">
+                        Cancel
+                    </a>
+
+                    <a href="{% url 'dashboard:home' %}"
+                       class="home-btn">
+                        ← Dashboard
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- Information Section -->
+        <div class="property-note">
+            <span>🔒</span>
+            Your property information is securely maintained
+            in your PropCare account.
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
