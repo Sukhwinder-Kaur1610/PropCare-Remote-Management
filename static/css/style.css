@@ -796,3 +796,199 @@ footer {
         gap: 10px;
     }
 }
+
+/* ==========================================
+   PROPCARE - LOGIN & REGISTRATION DESIGN
+========================================== */
+
+.auth-page {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 20px;
+    min-height: 500px;
+}
+
+.auth-intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-intro h1 {
+    color: var(--navy);
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.auth-intro p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 5px 0;
+}
+
+.auth-card {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 38px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(16, 43, 84, 0.08);
+}
+
+.auth-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-heading h2 {
+    color: var(--orange);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.auth-heading h3 {
+    color: var(--navy);
+    font-size: 28px;
+    margin: 12px 0;
+}
+
+.auth-heading p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Registration fields */
+
+.auth-form .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.auth-form .form-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.auth-form .form-field label {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.auth-form .required {
+    color: #dc3545;
+}
+
+.auth-form .form-field input,
+.auth-form .form-field select,
+.auth-form .form-field textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.auth-form .form-field input:focus,
+.auth-form .form-field select:focus,
+.auth-form .form-field textarea:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12);
+}
+
+.auth-form .help-text {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 7px;
+}
+
+.auth-form .help-text ul {
+    padding-left: 18px;
+    margin: 5px 0;
+}
+
+.auth-form .field-error,
+.auth-form .form-error {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* Submit button */
+
+.auth-submit {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 14px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.auth-submit:hover {
+    background: var(--orange);
+    color: var(--deep);
+}
+
+/* Login link */
+
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.auth-footer a {
+    color: var(--orange);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    color: var(--navy);
+    text-decoration: underline;
+}
+
+/* Responsive layout */
+
+@media (max-width: 768px) {
+
+    .auth-page {
+        margin: 20px auto;
+        padding: 12px;
+    }
+
+    .auth-card {
+        padding: 25px 20px;
+    }
+
+    .auth-form .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-intro h1 {
+        font-size: 22px;
+    }
+
+    .auth-heading h3 {
+        font-size: 23px;
+    }
+}
